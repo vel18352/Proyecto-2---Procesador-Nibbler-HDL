@@ -1,0 +1,52 @@
+50 // IN 0x0         Ingresa 12 de los push
+D0 // OUT 0x0        Muestra el accu
+4A // LIT 0xA        Carga 0xA al accu
+A8 // ADDI 0x8       Suma 0x8 por lo cual deberia estar el accu en 2 y C = 1
+40 // LIT 0x0        Carga 0x0 al accu
+A5 // ADDI 0x5       Suma 0x5 por lo cual deberia estar 0x5 en el accu y C = 0
+2A // CMPI 0xA       Compara el 0x5 del accu con un 0xA C deberia ser 1
+EB // NANDI 0xB      Realiza un NANDI entre 0x5 y 0xB por lo cual deberia devolver E
+10 // JNC 0xC        Realiza un salto de linea hasta 0xF y salta las instrucciones 
+0C 
+4A // LIT 0xA        Carga 0xA al accu
+@C
+4F // LIT 0xF        Carga 0xF al accu
+A1 // ADDI 0x1       Suma 0x1 por lo cual deberia estar 0x0 en el accu y C = 1
+00 // JC 0x12        Al estar C y Z = 1 hara un salto hasta la linea 18
+12
+4F // LIT 0xF        Carga 0xF al accu
+@12
+4F // LIT 0xF        Carga 0xF al accu
+40 // LIT 0x0        Carga 0x0 al accu
+80 // JZ  0x17       Realiza un salto hasta la linea 23 si Z es 1
+17
+4F // LIT 0xF        Carga 0xF al accu
+@17
+4C // LIT 0xC        Carga 0xC al accu
+90 // JZ  0x1E       Realiza un salto hasta la linea 30 si Z es 0
+1E
+4A // LIT 0xA        Carga 0xA al accu
+@1E
+4B // LIT 0xB        Carga 0xB al accu
+C0 // JMP 0x28       Realiza un salto hasta la linea 40 sin importar las condicionales
+28
+4A // LIT 0xA        Carga 0xA al accu
+@28
+4E // LIT 0xE        Carga 0xE al accu 
+44 // LIT 0x4        Carga 0x4 al accu
+73 // ST  0x333      Guarda lo de la accu en la localidad 0x333 de la ram
+33
+43 // LIT 0x3        Carga 0x3 al accu
+B3 // ADDM 0x333     Suma 0x3 del accu a la localidad 0x333 de la ram
+33
+63 // LD 0x333       Carga la localidad 0x333 de la ram que deberia ser 0x7
+33
+43 // LIT 0x3        Carga 0x3 al accu
+33 // CMPM 0x333     Compara lo almacenado en el accu con la localidad 0x333 de la ram
+33
+44 // LIT 0x4        Carga 0x4 al accu
+73 // ST  0x333      Guarda lo de la accu en la localidad 0x333 de la ram
+33
+42 // LIT 0x2        Carga 0x2 al accu
+F3 // NANDM 0x333    Realiza un NAND entre lo guardado en el accu y la localidad 0x333 de la ram que deberia dar F como resultado
+33
